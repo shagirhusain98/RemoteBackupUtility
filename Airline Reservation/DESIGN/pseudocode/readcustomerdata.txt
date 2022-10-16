@@ -1,0 +1,63 @@
+function: reading input from the customer file passed as CLA
+
+-----Defining Structures and globalising the needful -----
+DEFINE STRUCT CUSTOMERDETAILS 
+	ID, NAME, JOURNEY_DATE, NO_OF_SEATS, NEXT ptr
+TYPEDEF STRUCT CUSTOMERDETAILS CUSTOMER
+
+DEFINE STRUCT C_LIST
+	HEAD, TAIL
+TYPEDEF C_LIST CL 
+
+
+-----function begins-----	 
+BEGIN
+FUNCTION READCUSTOMER DATA
+PASS IN: CUSTOMER.DAT
+PASS OUT: NOTHING //void type
+
+CL CUSTOMER_INVALID //create and allocate memory to linked list to store invalid customers
+DEFINE CUST_INFO[SIZE] //to read each line from input
+DECLARE FILE ptr
+OPEN FILE
+	IF NULL THEN
+		PRINT "Issue in opening the file" EXIT
+	END
+INFINITE WHILE LOOP BEGIN
+//read each line into CUST_INFO
+	IF fgets(CUST_INFO,SIZE, ptr) is equal to NULL THEN
+		BREAK
+	ELSE
+		DECLARE TEMP string
+		STRCPY TEMP, CUST_INFO
+		INITIALISE COUNTER
+		TOKENISE TEMP using STRTOK
+			WHILE TOKEN is not equal to NULL
+				//date validation 
+			COUNTER INCREMENT
+			ENDWHILE
+
+		IF VALID
+			//allocate the ticket (see function file ticketallocation)
+		ELSE
+			FUNCTION INSERT_INVALID_CUSTOMER
+	END
+END WHILELOOP
+CLOSE FILE 
+ENDFUNCTION
+-----function ends-----	 
+
+----function definitions----
+
+FUNCTION INSERT_INVALID_CUSTOMER
+PASS IN: CUST_INFO, CUSTOMER_INVALID (linked list ptr)
+PASS OUT: NOTHING
+	NEWNODE CALLOC is of STRUCT C_LIST
+	STRCPY CUST_INFO string into NEWNODE
+	IF CUSTOMER_INVALID ->HEAD  is null THEN CUSTOMER_INVALID->HEAD is NEWNODE
+	IF CUSTOMER_INVALID->TAIL  is null THEN CUSTOMER_INVALID ->TAIL is NEWNODE
+	ELSE 
+		CUSTOMER_LIST ->TAIL ->NEXT is NEWNODE
+		CUSTOMER_LIST ->TAIL is NEWNODE
+	PTHREAD_MUTEX_UNLOCK(&LOCK_INVALID_CUST)
+ENDFUNCTION
