@@ -1,0 +1,9 @@
+CD301|Karan
+
+CD010|Priyal|10
+
+CD106|Harish|10
+
+CD210|Chekit|10|16
+
+CD407|Preetham|10

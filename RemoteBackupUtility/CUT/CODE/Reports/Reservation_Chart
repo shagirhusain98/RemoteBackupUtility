@@ -1,0 +1,109 @@
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL001	Indigo Airlines	02/10/2022	120	82
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD006	Pankaj	02/10/2022	16
+CD107	Mayuri	02/10/2022	10
+CD408	Shanaya	02/10/2022	12
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL002	Indigo Airlines	18/11/2022	120	10
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD002	Rahul	18/11/2022	18
+CD403	Prateek	18/11/2022	13
+CD205	Suyash	18/11/2022	12
+CD008	Khushi	18/11/2022	20
+CD207	Rishabh	18/11/2022	18
+CD406	Darpan	18/11/2022	17
+CD108	Vaishali	18/11/2022	12
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL003	Spicejet Airlines	10/10/2022	150	130
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD104	Surya	10/10/2022	10
+CD410	Prince	10/10/2022	10
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL004	Spicejet Airlines	12/10/2022	150	145
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD401	Preet	12/10/2022	5
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL005	American Airlines	16/12/2022	150	14
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD201	Kartik	16/12/2022	14
+CD402	Manthan	16/12/2022	14
+CD004	Prakash	16/12/2022	8
+CD102	Saksham	16/12/2022	16
+CD204	Aditya	16/12/2022	16
+CD302	Arpit	16/12/2022	20
+CD303	Manu	16/12/2022	10
+CD007	Satyam	16/12/2022	18
+CD105	Venkata	16/12/2022	20
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL006	American Airlines	08/12/2022	150	130
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD202	Govind	08/12/2022	10
+CD411	Neelam	08/12/2022	10
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL007	Vistara Airlines	06/10/2022	150	120
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD009	Aastha	06/10/2022	10
+CD208	Harsh	06/10/2022	10
+CD309	Harshika	06/10/2022	10
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL008	Vistara Airlines	04/12/2022	150	144
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD310	Yashvi	04/12/2022	6
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL009	Jet Airlines	22/10/2022	120	93
+----Printing Passenger Details----
+Passenger ID	Passenger Name	Date of Journey	Seats Booked
+CD001	Pravesh	22/10/2022	12
+CD209	Vishal	22/10/2022	10
+CD211	Hari	22/10/2022	5
+
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL010	Jet Airlines	28/12/2022	120	120
+---No Passengers for this flight for the given date of Journey---
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL011	Akasa Airlines	18/10/2022	100	100
+---No Passengers for this flight for the given date of Journey---
+
+----Printing Reservation Chart ----
+Flight ID	Flight Name	Date of Journey	Total Flight Capacity	Available Seats
+FL012	Akasa Airlines	08/10/2022	100	100
+---No Passengers for this flight for the given date of Journey---

@@ -1,0 +1,63 @@
+function: reading flight data into FLIGHTS_ARRAY
+
+-----Defining Structures and globalising the needful -----
+#DEFINE SIZE
+EXTERN FLIGHT (structure typedefed to FLIGHT)
+EXTERN FLIGHT_LIST (for flight linked_list variable present in main)
+
+-----function begins-----	 
+FUNCTION READFLIGHTDATA
+PASS IN: FLIGHTS.DAT
+PASS OUT: NOTHING //void type
+
+DEFINE FLIGHTINFO[SIZE] //to read each line from input
+DECLARE FILE ptr
+OPEN FILE
+	IF NULL THEN
+		PRINT "Issue in opening the file" EXIT
+	END
+INFINITE WHILE LOOP
+//read each line into FLIGHTINFO
+	IF fgets(FLIGHT_INFO,SIZE, ptr) is equal to NULL THEN
+		BREAK
+	ELSE
+		DECLARE TEMP string
+		STRCPY TEMP, FLIGHT_INFO
+		INTIALISE COUNTER
+		TOKENISE TEMP using STRTOK
+			WHILE TOKEN is not equal to NULL
+			COUNTER INCREMENT
+			ENDWHILE
+		IF VALID
+			FUNCTION INSERT_VALID_FLIGHT 
+		ELSE 
+			//function for inserting into invalid flights linked list
+		END
+	END
+CLOSE FILE 
+ENDFUNCTION
+-----function ends-----	 
+
+----function definitions----
+
+FUNCTION INSERT_VALID_FLIGHT
+PASS IN: FLIGHT_INFO, FLIGHT_LIST (linked list ptr)
+PASS OUT: NOTHING
+	NEWNODE CALLOC
+	COPY FLIGHT_INFO to NEWNODE for flight name, id, date and total seats, mutex variable same as flightID.  
+	//mutex initialisation at newnode for the flight lock 
+	//mutex variable is flightID to make it unique
+	IF FLIGHT_INFO ->HEAD  is null THEN FLIGHT_INFO ->HEAD is NEWNODE
+	IF FLIGHT_INFO ->TAIL  is null THEN FLIGHT_INFO ->TAIL is NEWNODE
+	ELSE 
+		FLIGHT_INFO ->TAIL ->NEXT is NEWNODE
+		FLIGHT_INFO ->TAIL is NEWNODE
+ENDFUNCTION
+
+
+		
+
+
+
+
+
