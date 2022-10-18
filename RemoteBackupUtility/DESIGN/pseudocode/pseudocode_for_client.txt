@@ -48,7 +48,7 @@ ELSE IF OPTION == -fd
 		READING all the filenames and concatinating to directories to create filepath 
 		calling the SEND_FILE() with socket name and filepath
 
-IF OPTION == -if	
+ELSE IF OPTION == -if	
 	IF ARGC != number THEN
 		PRINT "error!! enter correct number of arguments"
 	END
@@ -60,7 +60,7 @@ IF OPTION == -if
 			calling the SEND_FILE() with socket name and filename
 
 
-IF OPTION == -id	
+ELSE IF OPTION == -id	
 	IF ARGC != number THEN
 		PRINT "error!! enter correct number of arguments"
 	END
@@ -74,7 +74,7 @@ IF OPTION == -id
 			calling the SEND_FILE() with socket name and filename
 
 
-IF OPTION == -vf	
+ELSE IF OPTION == -vf	
 	IF ARGC != number THEN
 		PRINT "error!! enter correct number of arguments"
 	END
@@ -83,7 +83,18 @@ IF OPTION == -vf
 		making the file pathname by conatinating argv[]'s and Directory
 		calling the SEND_FILE() with socket name and filename
 
-IF OPTION == -sf	
+ELSE IF OPTION == -vd	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[3] argv[4] .... argv[argc-1]
+		SENDing the directory paths to the server
+		OPENING the directory and reading all the filenames
+		making the file pathname by conatinating Directories and filenames
+		calling the SEND_FILE() with name and socketname
+
+ELSE IF OPTION == -sf	
 	IF ARGC != number THEN
 		PRINT "error!! enter correct number of arguments"
 	END
@@ -94,26 +105,27 @@ IF OPTION == -sf
 		copying the cronjob schedule "* * * * *" to string
 		SENDing the schedule string to the server 
 
-
-IF ARGC != number THEN
-	PRINT "error!! enter correct number of arguments"
-END
-//memory allocation and initialisation of the flight linked list 
-FLIGHT_LIST CALLOC 
-CREATE FLIGHT_LIST (initialise head and tail to null)
-
-FUNCTION CALL:READ_FLIGHT_DATA 
-PASS IN:FLGHTS.DAT, FLIGHT_LIST (ptr)
-FUNCTION CALL:  READ_CUSTOMER_DATA //written in a separate file
-END
+ELSE IF OPTION == -sd	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[3] argv[4] .... argv[argc-1]
+		creating a cronjob based on argv's
+		concayinating the cronjob to the config file
+		copying the cronjob schedule "* * * * *" to string
+		SENDing the schedule string to the server 
+		
 ----main function ends----
 
 ----function definitions----
 
-FUNCTION CREATE_FLL 
-PASS IN: FLIGHT_LIST
+FUNCTION SEND_FILE 
+PASS IN: FILENAME, SOCKETNAME
 PASS OUT: NOTHING
-	FLIGHT_LIST->HEAD is NULL
+	OPEN FILE USEING the FILENAME
+	read the contents of the file 
+	SEND the contents of the file to the server using teh SOCKETNAME
 	FLIGHT_LIST -> TAIL is NULL
 ENDFUNCTION
 
