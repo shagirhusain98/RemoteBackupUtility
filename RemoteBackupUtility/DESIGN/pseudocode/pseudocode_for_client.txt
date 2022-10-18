@@ -1,0 +1,122 @@
+Pesudocode for Remote Backup Utility
+
+First function: MAIN FUNCTION
+
+-----Creating Sockets to send and recieve information -----
+
+ 
+ 
+
+----main function begins-----	 
+BEGIN
+
+Reading current time storing the MON & DOM in a string
+
+CREATING A SOCKET
+ Creatinga socket and acknowledging the user
+CONNECTING TO THE SERVER
+ checking weather the socket is connected or not
+ IF successful
+	 acknowledge the user
+ ELSE 
+	END
+
+READ argc, argv 
+//validating arguments
+//assigning argv[1] argv[2] to option and directory
+//sending argc argv[1] argv[2] to the server
+
+STARTING A IF ELSE LADDER FOR ALL THE OPTIONS
+IF OPTION == -ff	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[3] argv[4] .... argv[argc-1]
+		sending the argv[]'s (filenames) to server
+		making the file pathname by conatinating argv[]'s and Directory
+		calling the SEND_FILE() with socket name and filename
+
+ELSE IF OPTION == -fd	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[2] argv[3] .... argv[argc-1]
+		SENDing the directory paths to the server
+		OPENING the argv[]'s(directories)
+		READING all the filenames and concatinating to directories to create filepath 
+		calling the SEND_FILE() with socket name and filepath
+
+IF OPTION == -if	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[3] argv[4] .... argv[argc-1]
+		making the file pathname by conatinating argv[]'s and Directory
+		check wheather the file has been modified today
+		IF yes
+			calling the SEND_FILE() with socket name and filename
+
+
+IF OPTION == -id	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[3] argv[4] .... argv[argc-1]
+		SENDing the directory paths to the server
+		OPENING the directory and reading all the filenames
+		making the file pathname by conatinating Directories and filenames
+		check weather the file has been modified or not
+		IF yes
+			calling the SEND_FILE() with socket name and filename
+
+
+IF OPTION == -vf	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[2] argv[3] .... argv[argc-1]
+		making the file pathname by conatinating argv[]'s and Directory
+		calling the SEND_FILE() with socket name and filename
+
+IF OPTION == -sf	
+	IF ARGC != number THEN
+		PRINT "error!! enter correct number of arguments"
+	END
+        ELSE
+		reading argv[2] argv[3] .... argv[argc-1]
+		creating a cronjob based on argv's
+		concayinating the cronjob to the config file
+		copying the cronjob schedule "* * * * *" to string
+		SENDing the schedule string to the server 
+
+
+IF ARGC != number THEN
+	PRINT "error!! enter correct number of arguments"
+END
+//memory allocation and initialisation of the flight linked list 
+FLIGHT_LIST CALLOC 
+CREATE FLIGHT_LIST (initialise head and tail to null)
+
+FUNCTION CALL:READ_FLIGHT_DATA 
+PASS IN:FLGHTS.DAT, FLIGHT_LIST (ptr)
+FUNCTION CALL:  READ_CUSTOMER_DATA //written in a separate file
+END
+----main function ends----
+
+----function definitions----
+
+FUNCTION CREATE_FLL 
+PASS IN: FLIGHT_LIST
+PASS OUT: NOTHING
+	FLIGHT_LIST->HEAD is NULL
+	FLIGHT_LIST -> TAIL is NULL
+ENDFUNCTION
+
+
+
+	

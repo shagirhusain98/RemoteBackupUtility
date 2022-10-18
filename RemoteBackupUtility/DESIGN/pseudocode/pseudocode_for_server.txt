@@ -1,0 +1,47 @@
+Pesudocode for Remote Backup Utility
+
+First function: MAIN FUNCTION
+
+-----Creating Sockets to send and recieve information -----
+
+CREATING A SOCKET
+ Creatinga socket and acknowledging the user
+BINDING THE SOCKET
+ assigning the IP and Port No. of client to the socket
+ cheaking weather binding has been success full or not
+CONNECTING TO THE SERVER
+ checking weather the socket is connected or not
+ if successful acknowledge the user
+
+ 
+ 
+
+----main function begins-----	 
+BEGIN
+READ argc, argv 
+//validating arguments
+IF ARGC != number THEN
+	PRINT "error!! enter correct number of arguments"
+END
+//memory allocation and initialisation of the flight linked list 
+FLIGHT_LIST CALLOC 
+CREATE FLIGHT_LIST (initialise head and tail to null)
+
+FUNCTION CALL:READ_FLIGHT_DATA 
+PASS IN:FLGHTS.DAT, FLIGHT_LIST (ptr)
+FUNCTION CALL:  READ_CUSTOMER_DATA //written in a separate file
+END
+----main function ends----
+
+----function definitions----
+
+FUNCTION CREATE_FLL 
+PASS IN: FLIGHT_LIST
+PASS OUT: NOTHING
+	FLIGHT_LIST->HEAD is NULL
+	FLIGHT_LIST -> TAIL is NULL
+ENDFUNCTION
+
+
+
+	
