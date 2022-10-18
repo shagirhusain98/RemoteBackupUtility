@@ -1,0 +1,45 @@
+Pesudocode for Airline Reservation System (correspoding to single customer file)
+
+First function: MAIN FUNCTION
+
+-----Defining Structures and globalising the needful -----
+
+DEFINE STRUCT FILGHTDETAILS
+	FLIGHT_ID, FLIGHT_NAME, JOURNEY DATE, TOTAL_SEATS,CUSTOMERFINAL(linked list of customers), AVAILABLE_SEATS, MUTEX, NEXT
+TYPEDEF STRUCT FLIGHTDETAILS FLIGHT
+
+DEFINE STRUCT FLIGHT_LINKED_LIST
+	HEAD, TAIL
+TYPEDEF STRUCT FLIGHT_LINKED_LIST FLL
+
+INCLUDE FUNCTIONS HEADER_FILE
+
+----main function begins-----	 
+BEGIN
+READ argc, argv 
+//validating arguments
+IF ARGC != number THEN
+	PRINT "error!! enter correct number of arguments"
+END
+//memory allocation and initialisation of the flight linked list 
+FLIGHT_LIST CALLOC 
+CREATE FLIGHT_LIST (initialise head and tail to null)
+
+FUNCTION CALL:READ_FLIGHT_DATA 
+PASS IN:FLGHTS.DAT, FLIGHT_LIST (ptr)
+FUNCTION CALL:  READ_CUSTOMER_DATA //written in a separate file
+END
+----main function ends----
+
+----function definitions----
+
+FUNCTION CREATE_FLL 
+PASS IN: FLIGHT_LIST
+PASS OUT: NOTHING
+	FLIGHT_LIST->HEAD is NULL
+	FLIGHT_LIST -> TAIL is NULL
+ENDFUNCTION
+
+
+
+	

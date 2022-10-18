@@ -1,0 +1,43 @@
+function: ticket allocation for the valid customers
+
+-----Defining Structures and globalising the needful -----
+EXTERN CUSTOMER //struct to customer node
+EXTERN CL //for customer linked list
+EXTERN FLIGHT (structure typedefed to FLIGHT)
+EXTERN FLIGHT_LIST (for flight linked_list variable present in main)
+#DEFINE MAXNO_OFDETAILS 4
+#DEFINE MAXLENGTH
+	 
+-----function begins-----
+BEGIN
+READ argc, argv 
+FUNCTION TICKETALLOCATION
+PASS IN: CUST_INFO (it is a string from the inputfile)
+PASS OUT: NOTHING
+	DECLARE TEMP string
+	STRCPY TEMP, CUST_INFO
+	INITIALISE COUNTER
+	TOKENISE TEMP using STRTOK
+	CHAR ARRAY[MAXNO_OFDETAILS][MAXLENGTH] //just a temporary arrayto store the customer
+		WHILE TOKEN is not equal to NULL
+		SWITCH(COUNTER):
+			CASE 0: STRCPY ID and THEN BREAK
+			CASE 1: STRCPY NAME and THEN BREAK
+			CASE 2: STRCPY DATE and THEN BREAK
+			CASE 3: (atoi) ASSIGN NUMBER OF TICETS and THEN BREAK
+		COUNTER INCREMENT
+		ENDWHILE
+	FLIGHT *TEMPPTR = FLIGHT_LIST->HEAD;
+	WHILE TEMPPTR not equal to NULL THEN
+		IF STRCMP ARRAY[2] and TEMPPTR->DATE is equal to ZERO THEN
+				IF ARRAY[3] is less than or equal to TEMPPTR->AVALIABLE_SEATS THEN
+					TEMPPTR->AVAILABLE SEATS -= ARRAY[3]
+					//CREATE newnode for customer and INSERT in the flight struct field(at CUSTOMERFINAL field)
+				ELSE 
+					//store in UNAVAILABLEFLIGHTS linkedlist
+				END
+		END
+-----function ends-----	 
+
+		
+	
