@@ -1,13 +1,13 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-void full();
-void full_dir();
-void incremental();
-void incremental_dir();
-void versioned();
-void versioned_dir();
-void scheduled();
-void scheduled_dir();
+void full(char* filename);
+void full_dir(char* filename);
+void incremental(char* filename);
+void incremental_dir(char* filename);
+void versioned(char* filename);
+void versioned_dir(char* filename);
+void scheduled(char* filename);
+void scheduled_dir(char* filename);
 
 #endif
