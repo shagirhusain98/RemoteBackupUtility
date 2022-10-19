@@ -1,3 +1,4 @@
+//the server side code 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,6 +8,8 @@
 #define SIZE 1024
 #define backupdir "/home/kali/backup"
  
+
+// function to write the contents of the file recieved from the client
 void write_file(char* filename,int sockfd){
   int n;
   FILE *fp;
@@ -31,6 +34,7 @@ void write_file(char* filename,int sockfd){
   return;
 }
 
+//a function to concatnate a string in between a string not to the end (concatinate string b where a has ".")
 void spl(char* a,char* b){
 	
 	if(strstr(a+3,".") != NULL){
