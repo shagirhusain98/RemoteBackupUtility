@@ -1,2 +1,0 @@
-Test file
-Use this file to test weather the backup is working or not
