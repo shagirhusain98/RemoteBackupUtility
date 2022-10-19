@@ -1,3 +1,5 @@
+//The client function which communicates with the server and other function
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
