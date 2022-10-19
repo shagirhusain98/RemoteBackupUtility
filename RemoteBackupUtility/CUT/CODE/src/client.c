@@ -91,21 +91,8 @@ int main(int argc, char* argv[]){
         		printf(" Usage: ./client1.c -ff dir file1 file2 file3......");
         		exit(1);
         	}
-
-		for(int i = 3;i < argc;i++){
-
-			int k;
-			char temp[30];
-			strcpy(temp,argv[i]);
-			send(sockfd,temp,sizeof(temp),0);
-			printf("%s\n",temp);
-			strcpy(temp,filename);
- 	 		strcat(temp,argv[i]);
-			//strcpy(filename,temp);
-	 		printf("%s\n",temp);
-	 		send_file(temp,sockfd);
-
-		}
+		else
+			full(filename);
 
 	}
 	//Full backup for ***directories***
@@ -118,51 +105,8 @@ int main(int argc, char* argv[]){
         		 printf(" Usage: ./client -fd dir1 dir2 dir3 .......");
         		 exit(1);
         	}
-
-		filename[strlen(filename) - 1] = '\0';
-		printf("%s\n",filename);
-		char dirn[50];
-		for(int j = 2;j < argc;j++){
-
-			strcpy(dirn, argv[j]);
-			send(sockfd, dirn, sizeof(dirn), 0 );
-			printf("%s\n", argv[j]);
-		}
-
-
-
-		char msg[10];
-		struct dirent *de;
-		for(int i = 2;i < argc;i++){
-			DIR *dr = opendir(argv[i]);
-			char name[150];
-			char name2[150];
-			strcpy(name,argv[i]);
-			strcat(name,"/");
-			strcpy(name2,name);
-
-			if(dr == NULL){
-				printf("Couldn't open the directory");
-			}
-
-			while((de = readdir(dr)) != NULL){
-				if(strlen(de->d_name) > 2){
-					strcat(name2,de->d_name);
-					strcpy(msg,"go");
-					send(sockfd, msg, sizeof(msg), 0);
-					send(sockfd, name2, sizeof(name2), 0);
-					send_file(name2,sockfd);
-					printf("%s\n",name2);
-					strcpy(name2,name);
-				}
-			}
-		}
-
-		strcpy(msg,"stop");
-		send(sockfd, msg, sizeof(msg), 0);
-
-
-
+		else
+			full_dir(filename);
 	}
 	//incremental backup for ***files***
 	//./client -if dir file1 file2 file3 ..............
@@ -174,42 +118,8 @@ int main(int argc, char* argv[]){
         		printf(" Usage: ./client1.c -if dir file1 file2 file3......");
         		exit(1);
         	}
-
-		char message[10] ;
-		for(int i = 3; i < argc; i++){
-
-			char file[50];
-			char go[50];
-			strcpy(file,filename);
-			strcat(file,argv[i]);
-			strcpy(go,argv[i]);
-
-			struct stat filestat;
-			printf("%s\n",file);
-			stat(file,&filestat);
-			char bin[6];
-			char time_modified[30];
-			strcpy(time_modified, ctime(&filestat.st_ctime));
-			strncat(bin,time_modified+4,sizeof(bin));
-			strcpy(time_modified,bin);
-			printf("last_backup : %s\n",lb);
-			printf("File changed at : %s\n", time_modified);
-			if(strncmp(lb,time_modified,6) == 0){
-				printf("Backup Needed \n");
-				strcpy(message,"go");
-				int r = send(sockfd, message, sizeof(message), 0);
-				int s = send(sockfd, go, sizeof(go), 0);
-				printf("%d %d\n",r,s);
-				send_file(file,sockfd);
-			}
-			printf("\n");
-			bin[0] = '\0';
-		}
-		strcpy(message,"stop");
-		send(sockfd, message, sizeof(message), 0);
-
-
-
+		else
+			incremental(filename);
 	}
 	//incremental backup for ***directories**
 	//./client -id dir1 dir2 dir3 ...............
@@ -221,59 +131,8 @@ int main(int argc, char* argv[]){
         		printf(" Usage: ./client -id dir1 dir2 dir3 .......");
         		exit(1);
         	}
-
-		char dirn[50];
-		for(int j = 2;j < argc;j++){
-
-			strcpy(dirn, argv[j]);
-			send(sockfd, dirn, sizeof(dirn), 0 );
-			printf("%s\n", argv[j]);
-
-		}
-		printf("\n");
-
-		char message[10];
-		struct dirent *de;
-		for(int i = 2; i < argc; i++){
-			strcpy(filename,argv[i]);
-			char tm[30];
-			char dbin[6];
-			char nm[150];
-
-			struct stat fs;
-			stat(filename,&fs);
-			printf("%s\n",filename);
-			strcpy(tm,ctime(&fs.st_ctime));
-			strncat(dbin,tm+4,sizeof(dbin));
-			printf("last backup : %s\n",lb);
-			printf("Directory changed : %s\n",dbin);
-
-			if(strncmp(lb,dbin,6) == 0){
-				printf("backup needed\n");
-
-				DIR *dr = opendir(filename);
-				if(dr == NULL){
-					printf("Couldn't open the directory");
-				}
-
-				while((de = readdir(dr)) != NULL){
-					if(strlen(de->d_name) > 2){
-						strcpy(nm,filename);
-						strcat(nm,"/");
-						strcat(nm,de->d_name);
-						strcpy(message,"go");
-						send(sockfd, message, sizeof(message), 0);
-						send(sockfd, nm, sizeof(nm), 0);
-						send_file(nm,sockfd);
-						printf("%s\n",nm);
-					}
-				}
-				printf("\n");
-   			}
-			dbin[0] = '\0';
-		}
-		strcpy(message,"stop");
-		send(sockfd, message, sizeof(message), 0);
+		else
+			incremental_dir(filename);
 	}
 	//versioned backup files
 	//./client -vf dir file1 file2 file3 .........
@@ -285,21 +144,8 @@ int main(int argc, char* argv[]){
         		printf(" Usage: ./client1.c -vf dir file1 file2 file3......");
         		exit(1);
         	}
-
-		for(int i = 3;i < argc;i++){
-
-			int k;
-			char temp[30];
-			strcpy(temp,argv[i]);
-			send(sockfd,temp,sizeof(temp),0);
-			printf("%s\n",temp);
-			strcpy(temp,filename);
- 	 		strcat(temp,argv[i]);
-			//strcpy(filename,temp);
-	 		printf("%s\n",temp);
-	 		send_file(temp,sockfd);
-
-		}
+		else
+			versioned(filename);
 	}
 	//versioned backup directoreis
 	else if(strcmp(option,"-vd") == 0){
@@ -309,49 +155,8 @@ int main(int argc, char* argv[]){
         		printf(" Usage: ./client -vd dir1 dir2 dir3 .......");
         		exit(1);
         	}
-
-		filename[strlen(filename) - 1] = '\0';
-		printf("%s\n",filename);
-		char dirn[50];
-		for(int j = 2;j < argc;j++){
-
-			strcpy(dirn, argv[j]);
-			send(sockfd, dirn, sizeof(dirn), 0 );
-			printf("%s\n", argv[j]);
-		}
-
-
-
-		char msg[10];
-		struct dirent *de;
-		for(int i = 2;i < argc;i++){
-			DIR *dr = opendir(argv[i]);
-			char name[150];
-			char name2[150];
-			strcpy(name,argv[i]);
-			strcat(name,"/");
-			strcpy(name2,name);
-
-			if(dr == NULL){
-				printf("Couldn't open the directory");
-			}
-
-			while((de = readdir(dr)) != NULL){
-				if(strlen(de->d_name) > 2){
-					strcat(name2,de->d_name);
-					strcpy(msg,"go");
-					send(sockfd, msg, sizeof(msg), 0);
-					send(sockfd, name2, sizeof(name2), 0);
-					send_file(name2,sockfd);
-					printf("%s\n",name2);
-					strcpy(name2,name);
-				}
-			}
-		}
-
-		strcpy(msg,"stop");
-		send(sockfd, msg, sizeof(msg), 0);
-
+		else
+			versioned_dir(filename);
 	}
 	//scheduled backup for files
 	//./client -sf dir "mm hh dom mon dow" file1 file2 file3 .........
@@ -363,29 +168,8 @@ int main(int argc, char* argv[]){
         		printf(" Usage: ./client1.c -sf dir 'mm hh dom mon dow' file1 file2 file3 .........");
         		exit(1);
         	}
-
-		FILE* con = fopen("config","a");
-		if(con == NULL){
-			printf("Config file doesn't exist\n");
-		}
-
-		char ce[200];
-		char sbt[200];
-		strcpy(ce,argv[3]);
-		strcpy(sbt,ce);
-		strcat(ce," cd /home/kali/RBU && ./client -ff ");
-		strcat(ce,dir);
-
-		for(int i = 4;i < argc;i++){
-			//printf("%s\n",argv[i]);
-			strcat(ce," ");
-			strcat(ce,argv[i]);
-		}
-
-		send(sockfd, sbt, sizeof(sbt), 0);
-		strcat(ce,"\n");
-		printf("%s\n",ce);
-		fprintf(con, "%s", ce);
+		else
+			scheduled();
 
 	}
 	//scheduled backup for files
@@ -398,26 +182,8 @@ int main(int argc, char* argv[]){
         		printf(" Usage: /client -sd 'mm hh dom mon dow' dir1 dir2 dir3 ............");
         		exit(1);
         	}
-
-		FILE* con = fopen("config","a");
-		if(con == NULL){
-			printf("Config file doesn't exist\n");
-		}
-		char ce[200];
-		char sbt[200];
-		strcpy(ce, argv[2]);
-		strcpy(sbt, ce);
-		strcat(ce," cd /home/kali/RBU && ./client -fd ");
-
-		for(int i = 3; i < argc; i++){
-
-			strcat(ce," ");
-			strcat(ce, argv[i]);
-		}
-		send(sockfd, sbt, sizeof(sbt), 0);
-		strcat(ce,"\n");
-		printf("%s\n",ce);
-		fprintf(con, "%s", ce);
+		else
+			scheduled();
 
 	}
 	else {
@@ -432,13 +198,7 @@ int main(int argc, char* argv[]){
 		printf("-sd for Scheduled backup for Directories\n");	
 	}
 
-
-  //send_file("send.txt", sockfd);
-  //printf("[+]File data sent successfully.\n");
-
-
   printf("[+]Closing the connection.\n");
   close(sockfd);
-
   return 0;
 }
