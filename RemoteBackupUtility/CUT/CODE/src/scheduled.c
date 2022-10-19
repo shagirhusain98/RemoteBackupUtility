@@ -1,3 +1,5 @@
+//C file for scheduled() and scheduled_dir() functions for scheduled backup
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,6 +10,8 @@
 #include <dirent.h>
 #include "../include/header.h"
 
+
+//scheduled() function to create a cronjob and update it to the contab (conjob to backup files)
 void scheduled(char* filename,int argc,char **argv,int sockfd,char* dir){
   FILE* con = fopen("config","a");
 		if(con == NULL){
@@ -33,6 +37,7 @@ void scheduled(char* filename,int argc,char **argv,int sockfd,char* dir){
 		fprintf(con, "%s", ce);
 }
 
+//scheduled() function to create a cronjob and update it to the contab (cronjob to backup directories)
 void scheduled_dir(char* filename,int argc,char **argv,int sockfd){
 
   FILE* con = fopen("config","a");
