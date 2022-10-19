@@ -1,0 +1,3 @@
+1 * * * * cd /home/kali/RBU && ./client -ff House/tcp nile1.txt nile2.txt nile3.txt
+30 * * * * cd ../RBU && ./client -fd  /home/kali/temp0 /home/kali/temp1 /home/kali/Desktop
+30 * * * * cd ../RBU && ./client -fd  /home/kali/temp0 /home/kali/temp1 /home/kali/Desktop
