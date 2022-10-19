@@ -1,3 +1,5 @@
+//Header file to include all the functions
+
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
