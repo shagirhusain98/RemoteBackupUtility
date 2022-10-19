@@ -1,3 +1,5 @@
+//C file for full() and full_dir() for full backup functions
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,6 +10,8 @@
 #include <dirent.h>
 #include "../include/header.h"
 
+
+//full() function used to full backup files from client to server
 void full(char* filename,int argc,char **argv,int sockfd){
   for(int i = 3;i < argc;i++){
 
@@ -24,6 +28,7 @@ void full(char* filename,int argc,char **argv,int sockfd){
 		  }
 }
 
+//full_dir function used to full back each files of the folder to server 
 void full_dir(char* filename, int argc, char **argv,int sockfd){
 
 		filename[strlen(filename) - 1] = '\0';
