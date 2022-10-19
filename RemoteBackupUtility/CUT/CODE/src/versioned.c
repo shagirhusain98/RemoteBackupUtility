@@ -1,3 +1,4 @@
+//C file for versioned backup of files and directories
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,7 +11,7 @@
 
 
 
-
+//the versioned() function to send the files from client to server  
 void versioned(char* filename,int argc,char **argv,int sockfd){
   
       for(int i = 3;i < argc;i++){
@@ -27,6 +28,7 @@ void versioned(char* filename,int argc,char **argv,int sockfd){
 		}
 }
 
+//the versioned_dir() function to send all files present in directories to server
 void versioned_dir(char* filename,int argc,char **argv,int sockfd){
     filename[strlen(filename) - 1] = '\0';
 		printf("%s\n",filename);
