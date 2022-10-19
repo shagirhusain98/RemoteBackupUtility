@@ -84,7 +84,6 @@ int main(int argc, char* argv[]){
 	//Full backup for ***files***
 	//./client1.c -ff dir file1 file2 file3......
 	if(strcmp(option,"-ff") == 0){
-
         	if(argc<4)
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
@@ -93,12 +92,10 @@ int main(int argc, char* argv[]){
         	}
 		else
 			full(filename);
-
 	}
 	//Full backup for ***directories***
 	//./client -fd dir1 dir2 dir3 .......
 	else if(strcmp(option,"-fd") == 0){
-
         	if(argc<3)
 		{
        			 printf(" Invalid Usage : No folder name entered!!!\n");
@@ -111,7 +108,6 @@ int main(int argc, char* argv[]){
 	//incremental backup for ***files***
 	//./client -if dir file1 file2 file3 ..............
 	else if(strcmp(option,"-if") == 0){
-        	
 		if(argc<4)
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
@@ -124,7 +120,6 @@ int main(int argc, char* argv[]){
 	//incremental backup for ***directories**
 	//./client -id dir1 dir2 dir3 ...............
 	else if(strcmp(option,"-id") == 0){
-
         	if(argc<3)
 		{
         		printf(" Invalid Usage : No folder name entered!!!\n");
@@ -137,7 +132,6 @@ int main(int argc, char* argv[]){
 	//versioned backup files
 	//./client -vf dir file1 file2 file3 .........
 	else if(strcmp(option,"-vf") == 0){
-        	
 		if(argc<4)
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
@@ -161,7 +155,6 @@ int main(int argc, char* argv[]){
 	//scheduled backup for files
 	//./client -sf dir "mm hh dom mon dow" file1 file2 file3 .........
 	else if(strcmp(option,"-sf") == 0){
-        	
 		if(argc<5)
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
@@ -170,12 +163,10 @@ int main(int argc, char* argv[]){
         	}
 		else
 			scheduled();
-
 	}
 	//scheduled backup for files
 	//./client -sd "mm hh dom mon dow" dir1 dir2 dir3 ...............
 	else if(strcmp(option,"-sd") == 0){
-        	
 		if(argc<4)
 		{
         		printf(" Invalid Usage : No folder name entered!!!\n");
@@ -184,7 +175,6 @@ int main(int argc, char* argv[]){
         	}
 		else
 			scheduled();
-
 	}
 	else {
 		printf("Invalid Option please choose from any of the options mentioned below\n");
