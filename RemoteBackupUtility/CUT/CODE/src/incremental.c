@@ -1,3 +1,5 @@
+//C file for incremental() and incremental_dir() functions for incremenal backup of files and directories 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,6 +11,8 @@
 #include "../include/header.h"
 #define SIZE 1024
 
+
+//incremental() function to backup only the files that have been changed/modified today
 void incremental(char* filename,int argc,char **argv,int sockfd,char* lb){
   
     char message[10] ;
@@ -49,7 +53,7 @@ void incremental(char* filename,int argc,char **argv,int sockfd,char* lb){
 }
 
 
-
+//incremental_dir() function to backup only the files in directories that have been changed/modified today
 void incremental_dir(char* filename,int argc,char **argv,int sockfd,char* lb){
   
   char dirn[50];
