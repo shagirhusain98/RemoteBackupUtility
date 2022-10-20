@@ -1,4 +1,4 @@
-$ gcc suite.c write_file.c read_file.c sunny_rainy_testcase.c -o A2 -lcunit
+$ gcc suite.c write_file.c send_file.c sunny_rainy_testcase.c -o A2 -lcunit
 
 srira@DESKTOP-APN23A ~/RBU
 $ ./A2.exe
@@ -11,9 +11,9 @@ $ ./A2.exe
 Suite: suite write_file...
   Test: Test for write_file() in sunny cases ...passed
   Test: Test for write_file() in rainy cases ...passed
-Suite: suite read_file...
-  Test: Test for read_file() in sunny cases ...passed
-  Test: Test for read_file() in rainy cases ...passed
+Suite: suite send_file...
+  Test: Test for send_file() in sunny cases ...passed
+  Test: Test for send_file() in rainy cases ...passed
 
 Run Summary:    Type  Total    Ran Passed Failed Inactive
               suites      2      2    n/a      0        0
