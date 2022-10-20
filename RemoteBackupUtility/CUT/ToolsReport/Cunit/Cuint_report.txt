@@ -1,7 +1,7 @@
 $ gcc suite.c write_file.c read_file.c sunny_rainy_testcase.c -o A2 -lcunit
 
 srira@DESKTOP-APN23A ~/RBU
-$ ./x2.exe
+$ ./A2.exe
 
 
      CUnit - A unit testing framework for C - Version 2.1-3
