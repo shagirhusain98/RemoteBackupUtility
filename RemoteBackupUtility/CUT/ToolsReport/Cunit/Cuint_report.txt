@@ -1,0 +1,23 @@
+$ gcc suite.c write_file.c read_file.c sunny_rainy_testcase.c -o A2 -lcunit
+
+srira@DESKTOP-APN23A ~/RBU
+$ ./x2.exe
+
+
+     CUnit - A unit testing framework for C - Version 2.1-3
+     http://cunit.sourceforge.net/
+
+
+Suite: suite write_file...
+  Test: Test for write_file() in sunny cases ...passed
+  Test: Test for write_file() in rainy cases ...passed
+Suite: suite read_file...
+  Test: Test for read_file() in sunny cases ...passed
+  Test: Test for read_file() in rainy cases ...passed
+
+Run Summary:    Type  Total    Ran Passed Failed Inactive
+              suites      2      2    n/a      0        0
+               tests      4      4      4      0        0
+             asserts      8      8 	    8      0      n/a
+
+Elapsed time =    0.031 seconds
