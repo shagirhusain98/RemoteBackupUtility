@@ -18,6 +18,6 @@ Suite: suite read_file...
 Run Summary:    Type  Total    Ran Passed Failed Inactive
               suites      2      2    n/a      0        0
                tests      4      4      4      0        0
-             asserts      8      8 	    8      0      n/a
+             asserts      8      8      8      0      n/a
 
 Elapsed time =    0.031 seconds
