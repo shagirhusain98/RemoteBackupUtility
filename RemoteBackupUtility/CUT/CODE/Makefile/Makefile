@@ -1,5 +1,3 @@
-//Makefile
-
 #compiler
 GCC = gcc
 #output file
@@ -9,7 +7,6 @@ SRC = ../src
 #object file directory
 OBJ = ../obj
 
-//compile all the main files
 main: $(OBJ)/full.o $(OBJ)/incremental.o $(OBJ)/versioned.o $(OBJ)/scheduled.o $(OBJ)/client.o
 	$(GCC) -g $(LFLAGS) $(OBJ)/backup.exe $(OBJ)/full.o $(OBJ)/incremental.o $(OBJ)/versioned.o $(OBJ)/scheduled.o $(OBJ)/client.o
 $(OBJ)/full.o: $(SRC)/full.c
