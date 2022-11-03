@@ -18,13 +18,13 @@ void send_file(char* filename, int sockfd){
   FILE* fp = fopen(filename, "r");
   if (fp == NULL) {
     perror("[-]Error in reading file.");
-    exit(1);
+    exit(0);
   }
 
   while(fgets(data, SIZE, fp) != NULL) {
     if (send(sockfd, data, sizeof(data), 0) == -1) {
       perror("[-]Error in sending file.");
-      exit(1);
+      exit(0);
     }
     bzero(data, SIZE);
   }
@@ -53,7 +53,7 @@ int main(int argc, char* argv[]){
   sockfd = socket(AF_INET, SOCK_STREAM, 0);
   if(sockfd < 0) {
     perror("[-]Error in socket");
-    exit(1);
+    exit(0);
   }
   printf("[+]Server socket created successfully.\n");
 
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]){
   e = connect(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));
   if(e == -1) {
     perror("[-]Error in socket");
-    exit(1);
+    exit(0);
   }
  printf("[+]Connected to Server.\n");
 
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]){
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
         		printf(" Usage: ./client1.c -ff dir file1 file2 file3......");
-        		exit(1);
+        		exit(0);
         	}
 		else
 			full(filename,argc,argv,sockfd);
@@ -101,7 +101,7 @@ int main(int argc, char* argv[]){
 		{
        			 printf(" Invalid Usage : No folder name entered!!!\n");
         		 printf(" Usage: ./client -fd dir1 dir2 dir3 .......");
-        		 exit(1);
+        		 exit(0);
         	}
 		else
 			full_dir(filename,argc,argv,sockfd);
@@ -113,7 +113,7 @@ int main(int argc, char* argv[]){
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
         		printf(" Usage: ./client1.c -if dir file1 file2 file3......");
-        		exit(1);
+        		exit(0);
         	}
 		else
 			incremental(filename,argc,argv,sockfd,lb);
@@ -125,7 +125,7 @@ int main(int argc, char* argv[]){
 		{
         		printf(" Invalid Usage : No folder name entered!!!\n");
         		printf(" Usage: ./client -id dir1 dir2 dir3 .......");
-        		exit(1);
+        		exit(0);
         	}
 		else
 			incremental_dir(filename,argc,argv,sockfd,lb);
@@ -137,7 +137,7 @@ int main(int argc, char* argv[]){
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
         		printf(" Usage: ./client1.c -vf dir file1 file2 file3......");
-        		exit(1);
+        		exit(0);
         	}
 		else
 			versioned(filename,argc,argv,sockfd);
@@ -148,7 +148,7 @@ int main(int argc, char* argv[]){
 		{
         		printf(" Invalid Usage : No folder name entered!!!\n");
         		printf(" Usage: ./client -vd dir1 dir2 dir3 .......");
-        		exit(1);
+        		exit(0);
         	}
 		else
 			versioned_dir(filename,argc,argv,sockfd);
@@ -160,7 +160,7 @@ int main(int argc, char* argv[]){
 		{
         		printf(" Invalid Usage : No file name entered!!!\n");
         		printf(" Usage: ./client1.c -sf dir 'mm hh dom mon dow' file1 file2 file3 .........");
-        		exit(1);
+        		exit(0);
         	}
 		else
 			scheduled(filename,argc,argv,sockfd,dir);
@@ -172,7 +172,7 @@ int main(int argc, char* argv[]){
 		{
         		printf(" Invalid Usage : No folder name entered!!!\n");
         		printf(" Usage: /client -sd 'mm hh dom mon dow' dir1 dir2 dir3 ............");
-        		exit(1);
+        		exit(0);
         	}
 		else
 			scheduled_dir(filename,argc,argv,sockfd);
